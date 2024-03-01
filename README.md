@@ -14,6 +14,13 @@ Note that this is a research project and by definition is unstable. Please write
   [emantics-enhanced Temporal Graph Networks for Content Popularity Prediction](https://ieeexplore.ieee.org/document/10380461/)
 
 
+## Feature
+
+* An attention aggregator for the raw message processing.
+
+* An AoI-based message filter with the attention aggregator.
+
+* Different semantic aggregator for the representation learning.
 
 ## Running the experiments
 
@@ -30,13 +37,11 @@ pip install -r requirements.txt
 Download the wikipedia and reddit datasets from
 [here](http://snap.stanford.edu/jodie/) and netflix dataset from [here](https://www.kaggle.com/datasets/vodclickstream/netflix-audience-behaviour-uk-movies). 
 
-You can also use the data we saved in the folder *data*.
+You can also use the data we saved in the folder *./data*.
 
 #### Preprocess the data
 
 ```{bash}
-python utils/preprocess_data.py --data wikipedia --bipartite
-python utils/preprocess_data.py --data reddit --bipartite
 python utils/netflix_process.py --bipartite --coder BERT
 ```
 
@@ -52,7 +57,8 @@ python train_self_supervised.py train_self_supervised.py --n_runs 5 --n_epoch 50
 
 Training STGN:
 ```{bash}
-python train_self_supervised.py train_self_supervised.py --n_runs 5 --n_epoch 50 --aggregator attn --prefix TGN-A --data wikipedia --n_neighbor 6 --use_memory --use_age --bs 200 --Sem --mix Attn
+# M2-STGN:
+python train_self_supervised.py train_self_supervised.py --n_runs 5 --n_epoch 50 --aggregator attn --prefix STGN-A --data netflix --n_neighbor 6 --use_memory --use_age --bs 200 --Sem --mix Attn
 ```
 
 
@@ -83,6 +89,7 @@ python train_self_supervised.py train_self_supervised.py --n_runs 5 --n_epoch 50
 ```
 
 
-## Thanks 
+## Acknowledgements 
 
-This repository is largely inspired by [TGN](https://github.com/twitter-research/tgn).
+This repository is based on modifications and extensions of [TGN](https://github.com/twitter-research/tgn). We express our gratitude for the original contributions.
+
