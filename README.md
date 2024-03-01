@@ -20,7 +20,7 @@ Note that this is a research project and by definition is unstable. Please write
 
 * An AoI-based message filter with the attention aggregator.
 
-* Different semantic aggregator for the representation learning.
+* Different semantic aggregators for the representation learning.
 
 ## Running the experiments
 
